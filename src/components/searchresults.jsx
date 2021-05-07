@@ -1,14 +1,17 @@
 import React from 'react';
 
-const SearchResults = ({results=[]}) => {
+const SearchResults = ({results=[], add}) => {
   return (
     <>
     { results.map((data,index) => {
         if (data) {
           return (
-            <div key={data}>
-              <p>{data}</p>
-	    </div>	
+            <tr>
+                <td>{data}</td>
+                <td>
+                    <button onClick={() => { add(data) }}>Nominate</button>
+                </td>
+	    </tr>	
     	   )	
     	 }
     	 return null

@@ -9,18 +9,22 @@ import Nominations from "../components/nominations";
 
 const Home = (props) => {
     const [input, setInput] = useState('');
-    const [resultList, setResultList] = useState();
-    const [nominationsList, setNominationsList] = useState();
+    const [resultList, setResultList] = useState([]);
+    const [nominationsList, setNominationsList] = useState([]);
 
     const search = async (input) => {
         const filtered = ["hi", "movie"];
-        const nom = ["movies"];
         setInput(input);
         setResultList(filtered);
-        setNominationsList(nom);
         console.log(resultList);
         console.log(nominationsList);
         console.log("Clicked");
+    }
+
+    const nominate = async (input) => {
+        if(nominationsList.indexOf(input) === -1){ // add to nominate list if not yet nominated
+            setNominationsList(nominationsList => [...nominationsList, input]);
+        }
     }
 
     //useEffect(() => {fetchData()}, []);
@@ -37,7 +41,9 @@ const Home = (props) => {
             <Row>
                 <Col>
                     <h2>Results</h2>
-                    <SearchResults results={resultList} />
+                    <SearchResults 
+                        results={resultList}
+                        add={nominate} />
                 </Col>
                 <Col>
                     <h2>Nominations</h2>
