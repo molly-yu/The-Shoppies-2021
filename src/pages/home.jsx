@@ -6,10 +6,24 @@ import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import axios from 'axios'
 
+import logo from '../assets/shopify_icon.png';
 import SearchBar from '../components/searchbar';
 import SearchResults from '../components/searchresults';
 import Nominations from '../components/nominations';
 import Button from '../components/button';
+
+const LineBreak = styled.hr`
+    color: grey;
+    backgroundColor: grey,
+    height: 3;
+`;
+
+const Logo = styled.img`
+    height: 2.7rem;
+    width: 2.7rem;
+    margin: 8px;
+    vertical-align:middle;
+`;
 
 const ContentDiv = styled.div`
     padding: 1.5rem;
@@ -54,7 +68,8 @@ const Home = (props) => {
             setResultList(movies)
         }
         else{
-            NotificationManager.info("No titles found! Try another search.");
+            NotificationManager.error("No titles found! Try another search.");
+            setResultList([]);
         }
     }
 
@@ -63,9 +78,8 @@ const Home = (props) => {
             console.log("added");
             setNominationsList(nominationsList => [...nominationsList, input]);
             // notifications banner
-            console.log(nominationsList.length);
             if(nominationsList.length === 4) {
-                NotificationManager.info("Congratulations, you've successfully nominated your movies! Feel free to modify your nominations.");
+                NotificationManager.success("Congratulations, you've successfully nominated your movies!");
             }
         }
     }
@@ -82,7 +96,8 @@ const Home = (props) => {
     return (
     <div className="Home">
         <ContentDiv>
-            <h1>the shoppies</h1>
+            <h1><Logo className="logo" src={logo} alt="" />
+            the shoppies</h1>
             <p>Welcome to The Shoppies, the annual movie awards for entrepreneurs. You can nominate up to 5 movies!</p>
             <SearchDiv>
                 <h2>Movie Title</h2>
@@ -97,6 +112,7 @@ const Home = (props) => {
                 <Col>
                 <ResultDiv>
                     <h2>Search Results</h2>
+                    <LineBreak />
                     <table>
                     <SearchResults 
                         results={resultList}
@@ -108,6 +124,7 @@ const Home = (props) => {
                 <Col>
                 <ResultDiv>
                     <h2>Your Nominations</h2>
+                    <LineBreak />
                     <table>
                     <Nominations 
                         nominations={nominationsList} 

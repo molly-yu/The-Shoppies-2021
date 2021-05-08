@@ -2,6 +2,7 @@
   text-align: center;
   font-family: 'ProximaNovaLight','Helvetica Neue','Helvetica','Arial','sans-serif';
   background-color:#F7F2EE;
+  min-height:100vh;
 }
 
 .App-header {
