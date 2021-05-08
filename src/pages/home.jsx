@@ -22,14 +22,15 @@ const Logo = styled.img`
     height: 2.7rem;
     width: 2.7rem;
     margin: 8px;
-    vertical-align:middle;
+    vertical-align: middle;
 `;
 
 const ContentDiv = styled.div`
     padding: 1.5rem;
     max-width: 1080px;
+    min-height:100vh;
     @media (min-width: 800px) {
-    width: 70%;
+    width: 100%;
     margin: auto;
     }
     @media (max-width: 799px) {
@@ -51,15 +52,28 @@ const ResultDiv = styled.div`
     border: 1px solid #D8D5D5;
     border-radius: 10px;
 `;
+    
+    
 
 const Home = (props) => {
     const [input, setInput] = useState('');
     const [resultList, setResultList] = useState([]);
     const [nominationsList, setNominationsList] = useState([]);
 
+    useEffect(() => { // load saved nominations in storage
+        const nominations = localStorage.getItem('nominations');
+        if(nominations){
+            setNominationsList(JSON.parse(nominations));
+        }
+    }, []);
+    
+    useEffect(() => { // save nominations in storage
+        localStorage.setItem('nominations', JSON.stringify(nominationsList));
+    }, [nominationsList]);
+
     const updateSearch = async (input) => {
         setInput(input);
-    }
+    }     
 
     const search = async () => {
         const response = await axios.get("http://www.omdbapi.com/?apikey=91fd7d58&s=" + input); // get request to api by title
@@ -88,6 +102,7 @@ const Home = (props) => {
         console.log(nominationsList.indexOf(input));
         if(nominationsList.indexOf(input) !== -1) {
             setNominationsList(nominationsList.filter(item => item !== input));
+            localStorage.setItem('nominations', nominationsList);
         }
     }
 
