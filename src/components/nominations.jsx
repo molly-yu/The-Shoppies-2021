@@ -1,15 +1,17 @@
 import React from 'react';
 
+import Button from './button';
+
 const Nominations = ({nominations=[], remove}) => {
   return (
     <>
     { nominations.map((data,index) => {
         if (data) {
           return (
-            <div key={data.Title}>
-                <p>{data.Title}</p>
-                    <button onClick={() => { remove(data) }}>X</button>
-            </div>	
+            <tr key={data.Title}>
+                <td>{data.Title + " (" + data.Year + ")"}</td>
+                <td><Button onClick={() => { remove(data) }}>Remove</Button></td>
+            </tr>
     	   )	
     	 }
     	 return null
