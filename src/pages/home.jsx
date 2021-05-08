@@ -128,22 +128,28 @@ const Home = (props) => {
                 <ResultDiv>
                     <h2>Search Results</h2>
                     <LineBreak />
+                    <h3>Click on a movie to learn more about it!</h3>
                     <table>
-                    <SearchResults 
-                        results={resultList}
-                        nominated={nominationsList}
-                        add={nominate} />
+                        <tbody>
+                        <SearchResults 
+                            results={resultList}
+                            nominated={nominationsList}
+                            add={nominate} />
+                        </tbody>
                     </table>
                     </ResultDiv>
                 </Col>
                 <Col>
                 <ResultDiv>
-                    <h2>Your Nominations</h2>
+                    <h2>Nominations</h2>
                     <LineBreak />
+                    <h3>Your nominations are automatically synced and saved.</h3>
                     <table>
+                        <tbody>
                     <Nominations 
                         nominations={nominationsList} 
                         remove={unnominate} />
+                        </tbody>
                     </table>
                     </ResultDiv>
                 </Col>

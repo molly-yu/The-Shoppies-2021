@@ -8,9 +8,9 @@ const Nominations = ({nominations=[], remove}) => {
     { nominations.map((data,index) => {
         if (data) {
           return (
-            <tr key={data.Title}>
+            <tr key={data.imdbID}>
                 <td>{data.Title + " (" + data.Year + ")"}</td>
-                <td><Button onClick={() => { remove(data) }}>Remove</Button></td>
+                <td><Button round={true} onClick={() => { remove(data) }}>✕</Button></td>
             </tr>
     	   )	
     	 }

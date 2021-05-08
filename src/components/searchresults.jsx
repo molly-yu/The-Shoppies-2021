@@ -12,9 +12,9 @@ const SearchResults = ({results=[],nominated=[], add}) => {
                 disabled = true;
             }
           return (
-            <tr key={data.Title}>
+            <tr key={data.imdbID}>
                 <td>{data.Title + " (" + data.Year + ")"}</td>
-                <td><Button disabled={disabled} onClick={() => { add(data) }}>Nominate</Button></td>
+                <td><Button disabled={disabled} round={true} onClick={() => { add(data) }}>＋</Button></td>
             </tr>
     	   )	
     	 }
