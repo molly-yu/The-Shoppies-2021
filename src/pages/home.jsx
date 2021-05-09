@@ -147,6 +147,7 @@ const Home = (props) => {
                 <SearchBar
                     keyword={input}
                     setKeyword={updateSearch}
+                    searchEnter={search}
                 />
                 <Button onClick={search}>Search</Button> 
             </SearchDiv>

@@ -8,6 +8,9 @@ const Icon = styled.img`
     height: 30px;
     width: 30px;   
     cursor: pointer; 
+    &:hover{
+        opacity:50%;
+    }
 `;
 
 const SearchResults = ({results=[], nominated=[], add, open}) => {
@@ -16,7 +19,7 @@ const SearchResults = ({results=[], nominated=[], add, open}) => {
     { results.map((data,index) => {
         let disabled = false;
         if (data) {
-            if(nominated.length === 5 || nominated.find(movie => movie.Title === data.Title)){
+            if(nominated.length === 5 || nominated.find(movie => movie.imdbID === data.imdbID)){
                 disabled = true;
             }
           return (
