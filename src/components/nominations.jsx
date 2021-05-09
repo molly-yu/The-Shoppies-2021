@@ -7,7 +7,9 @@ import Button from './button';
 const Icon = styled.img`
     height: 30px;
     width: 30px;   
-    cursor: pointer; 
+    &:hover{
+        opacity:50%;
+    }
 `;
 
 const Nominations = ({nominations=[], remove, open}) => {
@@ -19,7 +21,7 @@ const Nominations = ({nominations=[], remove, open}) => {
             <tr key={data.imdbID}>
                 <td><Button round={true} onClick={() => { remove(data) }}>✕</Button></td>
                 <td>{data.Title + " (" + data.Year + ")"}</td>
-                <td><Icon src={OpenIcon} alt="Open" onClick={() => {open(data)}}/></td>
+                <td><Button close={true}><Icon aria-label="Expand" src={OpenIcon} alt="Open" onClick={() => {open(data)}}/></Button></td>
             </tr>
     	   )	
     	 }

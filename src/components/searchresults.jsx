@@ -7,7 +7,6 @@ import Button from './button';
 const Icon = styled.img`
     height: 30px;
     width: 30px;   
-    cursor: pointer; 
     &:hover{
         opacity:50%;
     }
@@ -26,7 +25,7 @@ const SearchResults = ({results=[], nominated=[], add, open}) => {
             <tr key={data.imdbID}>
                 <td><Button disabled={disabled} round={true} onClick={() => { add(data) }}>＋</Button></td>
                 <td>{data.Title + " (" + data.Year + ")"}</td>
-                <td><Icon src={OpenIcon} alt="Open" onClick={() => {open(data)}}/></td>
+                <td><Button close={true}><Icon aria-label="Expand" src={OpenIcon} alt="Open" onClick={() => {open(data)}}/></Button></td>
             </tr>
     	   )	
     	 }

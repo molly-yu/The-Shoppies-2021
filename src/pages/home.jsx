@@ -101,7 +101,6 @@ const Home = (props) => {
 
     const nominate = async (input) => {
         if(nominationsList.indexOf(input) === -1){ // add to nominate list if not yet nominated
-            console.log("added");
             setNominationsList(nominationsList => [...nominationsList, input]);
             // notifications banner
             if(nominationsList.length === 4) {
@@ -130,7 +129,6 @@ const Home = (props) => {
     }
 
     const openLink = async (movie) => {
-        // window.location.href = 'https://imdb.com/title/'; 
         if(movie){
             window.open(`https://imdb.com/title/${movie.imdbID}`, "_blank");
         }
@@ -139,7 +137,7 @@ const Home = (props) => {
     return (
     <div className="Home">
         <ContentDiv>
-            <h1><Logo className="logo" src={logo} alt="" />
+            <h1><Logo className="logo" src={logo} alt="Shopify Logo" />
             the shoppies</h1>
             <p2>Welcome to The Shoppies, the annual movie awards for entrepreneurs. You can nominate up to 5 movies!</p2>
             <SearchDiv>
@@ -158,7 +156,7 @@ const Home = (props) => {
                     <h2>Search Results</h2>
                     <LineBreak />
                     <h3>{`Displaying search results for "${searchValue}".`}</h3>
-                    <table>
+                    <table aria-label="Search Results Table">
                         <tbody>
                         <SearchResults 
                             results={resultList}
@@ -174,7 +172,7 @@ const Home = (props) => {
                     <h2>Nominations</h2>
                     <LineBreak />
                     <h3>Your nominations are automatically synced and saved.</h3>
-                    <table>
+                    <table aria-label="Nominations Table">
                         <tbody>
                     <Nominations 
                         nominations={nominationsList} 
@@ -188,10 +186,10 @@ const Home = (props) => {
       <Modal show={modalOpen} onHide={closeModal}>
       <Modal.Header>
           <Modal.Title>{movieOpen ? movieOpen.Title + ` (${movieOpen.Year})`: ''}</Modal.Title>
-          <Button close={true} onClick={closeModal}>×</Button>
+          <Button aria-label="Close" close={true} onClick={closeModal}>×</Button>
         </Modal.Header>
         <Modal.Body>
-            <Poster src={movieOpen ? movieOpen.Poster: ''} alt=""/>
+            <Poster src={movieOpen ? movieOpen.Poster: ''} alt="Movie Poster"/>
             <p>{`${movieOpen ? movieOpen.Plot : ''}`}</p>
             <p>{`Genre: ${movieOpen ? movieOpen.Genre : ''}`}</p>
             <p>{`Directed by ${movieOpen ? movieOpen.Director : ''}`}</p>
