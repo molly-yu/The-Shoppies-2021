@@ -32,3 +32,9 @@ Some of the additional features include:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+Some screenshots of the working app:
+
+![1](public/Screencap1.PNG)
+
+![2](public/Screencap2.PNG)

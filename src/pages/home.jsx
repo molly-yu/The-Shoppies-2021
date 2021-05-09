@@ -90,8 +90,6 @@ const Home = (props) => {
         const movies = response.data.Search;
         if(movies){
             setResultList(movies)
-
-            console.log(nominationsList);
         }
         else{
             NotificationManager.error("No titles found! Try another search.");
