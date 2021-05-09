@@ -1,21 +1,29 @@
 import styled, { css } from "styled-components";
 
 const Button = styled.button`
-    background-color: #139936; /* Green */
+    
     border: none;
-    color: white;
     margin: 3px;
-   
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    
     &:hover {
-        opacity:70%;
+        opacity:40%;
     }
+    ${props => props.close ?
+    css `
+        color: grey;
+        background-color: inherit;
+        font-size:30px;
+    `: css `
+        background-color: #139936; /* Green */
+        color: white;
+        font-size: 16px;
+    `};
     ${props => props.disabled ?
     css`
-        opacity:70%;
+        opacity:40%;
         cursor: not-allowed;
     `: css`
         opacity:100%;
@@ -25,6 +33,7 @@ const Button = styled.button`
             border-radius: 50%;
             height: 30px;
             width: 30px;
+            margin-right: 10px;
         `: css`
             border-radius: 5%;
             padding: 9px 15px;

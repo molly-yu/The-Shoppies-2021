@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { Modal } from 'react-bootstrap';
 
 import axios from 'axios'
 
@@ -23,6 +24,12 @@ const Logo = styled.img`
     width: 2.7rem;
     margin: 8px;
     vertical-align: middle;
+`;
+
+const Poster = styled.img`
+    width:50%;
+    display: block;
+    margin: auto;
 `;
 
 const ContentDiv = styled.div`
@@ -53,12 +60,14 @@ const ResultDiv = styled.div`
     border-radius: 10px;
 `;
     
-    
 
 const Home = (props) => {
     const [input, setInput] = useState('');
+    const [searchValue, setSearchValue] = useState('');
     const [resultList, setResultList] = useState([]);
     const [nominationsList, setNominationsList] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [movieOpen, setMovieOpen] = useState(null);
 
     useEffect(() => { // load saved nominations in storage
         const nominations = localStorage.getItem('nominations');
@@ -76,10 +85,13 @@ const Home = (props) => {
     }     
 
     const search = async () => {
+        setSearchValue(input);
         const response = await axios.get("http://www.omdbapi.com/?apikey=91fd7d58&s=" + input); // get request to api by title
         const movies = response.data.Search;
         if(movies){
             setResultList(movies)
+
+            console.log(nominationsList);
         }
         else{
             NotificationManager.error("No titles found! Try another search.");
@@ -99,21 +111,37 @@ const Home = (props) => {
     }
 
     const unnominate = async (input) => {
-        console.log(nominationsList.indexOf(input));
         if(nominationsList.indexOf(input) !== -1) {
             setNominationsList(nominationsList.filter(item => item !== input));
             localStorage.setItem('nominations', nominationsList);
         }
     }
 
-    //useEffect(() => {fetchData()}, []);
+    const openModal = async (movie) => {
+        const response = await axios.get("http://www.omdbapi.com/?apikey=91fd7d58&i=" + movie.imdbID); 
+        const currentMovie = response.data;
+        setMovieOpen(currentMovie);
+        setModalOpen(true);
+    }
+
+    const closeModal = async () => {
+        setModalOpen(false);
+        setMovieOpen(null);
+    }
+
+    const openLink = async (movie) => {
+        // window.location.href = 'https://imdb.com/title/'; 
+        if(movie){
+            window.open(`https://imdb.com/title/${movie.imdbID}`, "_blank");
+        }
+    }
 
     return (
     <div className="Home">
         <ContentDiv>
             <h1><Logo className="logo" src={logo} alt="" />
             the shoppies</h1>
-            <p>Welcome to The Shoppies, the annual movie awards for entrepreneurs. You can nominate up to 5 movies!</p>
+            <p2>Welcome to The Shoppies, the annual movie awards for entrepreneurs. You can nominate up to 5 movies!</p2>
             <SearchDiv>
                 <h2>Movie Title</h2>
                 <SearchBar
@@ -128,13 +156,14 @@ const Home = (props) => {
                 <ResultDiv>
                     <h2>Search Results</h2>
                     <LineBreak />
-                    <h3>Click on a movie to learn more about it!</h3>
+                    <h3>{`Displaying search results for "${searchValue}".`}</h3>
                     <table>
                         <tbody>
                         <SearchResults 
                             results={resultList}
                             nominated={nominationsList}
-                            add={nominate} />
+                            add={nominate} 
+                            open={openModal} />
                         </tbody>
                     </table>
                     </ResultDiv>
@@ -148,13 +177,32 @@ const Home = (props) => {
                         <tbody>
                     <Nominations 
                         nominations={nominationsList} 
-                        remove={unnominate} />
+                        remove={unnominate} 
+                        open={openModal} />
                         </tbody>
                     </table>
                     </ResultDiv>
                 </Col>
             </Row>
-      
+      <Modal show={modalOpen} onHide={closeModal}>
+      <Modal.Header>
+          <Modal.Title>{movieOpen ? movieOpen.Title + ` (${movieOpen.Year})`: ''}</Modal.Title>
+          <Button close={true} onClick={closeModal}>×</Button>
+        </Modal.Header>
+        <Modal.Body>
+            <Poster src={movieOpen ? movieOpen.Poster: ''} alt=""/>
+            <p>{`${movieOpen ? movieOpen.Plot : ''}`}</p>
+            <p>{`Genre: ${movieOpen ? movieOpen.Genre : ''}`}</p>
+            <p>{`Directed by ${movieOpen ? movieOpen.Director : ''}`}</p>
+            <p>{`Written by ${movieOpen ? movieOpen.Writer : ''}`}</p>
+            <p>{`Featuring ${movieOpen ? movieOpen.Actors : ''}`}</p>
+            </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => openLink (movieOpen)}>
+           View on IMDb
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <NotificationContainer/>
       </ContentDiv>
     </div>
