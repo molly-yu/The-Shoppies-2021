@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# The Shoppies 2021 Frontend Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to The Shoppies! This project was created for the Shopify UX Developer Intern & Web Developer Intern Challenge for Fall 2021. 
 
-## Available Scripts
+View the deployed app here: http://the-shoppies-2021-molly-yu.herokuapp.com/
 
-In the project directory, you can run:
+Project description: The Shoppies are an annual movie awards for entrepreneurs. On the website, users will be able to search and nominate 5 movies using the API from OMDB. 
+The webpage is user-friendly and includes additional features to help users pick nominations easily and accessibly. The app was built with ReactJS using entirely functional components with Hooks for state management. Data is saved through caching with localStorage.
 
+Some of the basic features include:
+- Search OMDB and display the movie results
+- Add a movie from the search results to our nomination list
+- View the list of films already nominated
+- Remove a nominee from the nomination list
+
+In particular, the following technical requirements were implemented:
+- Search results come from OMDB's API. If no results are available, a banner pops up to indicate to the user that no movies were found.
+- Each search result shows its title, year of release and a (+) button to nominate that film.
+- Updates to the search terms update the result list.
+- Movies in search results can be added and removed from the nomination list.
+- If a search result has already been nominated, its nominate button is disabled.
+- A banner is displayed when user has finished nominating 5 films. At this point, all nominate buttons will be disabled.
+
+Some of the additional features include:
+- Automatic nomination saving upon refreshing the page (through cache).
+- Details about each movie (e.g. plot, directors/writers, actors) can be viewed as a modal pop up by clicking the button next to the movie title. From there, the associated IMDb page can be opened in a new tab.
+- Appropriate shadowing/animations on button clicks and banner pop ups.
+- Improved accessibility through aria-labels and keyboard focusing.
+
+## Local Build
 ### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
