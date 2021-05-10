@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from "styled-components";
 
 import OpenIcon from '../assets/open.png';
 import Button from './button';
