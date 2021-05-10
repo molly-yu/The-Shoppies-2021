@@ -13,7 +13,7 @@ const Nominations = ({nominations=[], remove, open}) => {
           return (
             <tr key={data.imdbID}>
                 <td><Button round={true} onClick={() => { remove(data) }}>✕</Button></td>
-                <td>{data.Title + " (" + data.Year + ")"}</td>
+                <td className='movieTitle'>{data.Title + " (" + data.Year + ")"}</td>
                 <td><Button close={true}><Icon aria-label="Expand" src={OpenIcon} alt="Open" onClick={() => {open(data)}}/></Button></td>
             </tr>
     	   )	
