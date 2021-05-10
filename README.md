@@ -27,6 +27,8 @@ Some of the additional features include:
 - Appropriate shadowing/animations on button clicks and banner pop ups.
 - Improved accessibility through aria-labels and keyboard focusing.
 
+Unit testing done with Jest and Enzyme. 
+
 ## Local Build
 ### `yarn start`
 

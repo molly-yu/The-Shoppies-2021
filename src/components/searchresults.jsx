@@ -3,14 +3,7 @@ import styled from "styled-components";
 
 import OpenIcon from '../assets/open.png';
 import Button from './button';
-
-const Icon = styled.img`
-    height: 30px;
-    width: 30px;   
-    &:hover{
-        opacity:50%;
-    }
-`;
+import Icon from './icon';
 
 const SearchResults = ({results=[], nominated=[], add, open}) => {
   return (

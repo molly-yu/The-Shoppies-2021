@@ -52,7 +52,9 @@ const SearchDiv = styled.div`
     border-radius: 10px;
 `;
 const ResultDiv = styled.div`
-    padding:2rem;
+    padding: 2rem;
+    width: calc(100% - 2rem);
+    display: inline-block;
     margin: 1rem;
     margin-top: 0;
     background-color:white;
@@ -61,7 +63,7 @@ const ResultDiv = styled.div`
 `;
     
 
-const Home = (props) => {
+const Home = () => {
     const [input, setInput] = useState('');
     const [searchValue, setSearchValue] = useState('');
     const [resultList, setResultList] = useState([]);
@@ -95,6 +97,10 @@ const Home = (props) => {
             NotificationManager.error("No titles found! Try another search.");
             setResultList([]);
         }
+    }
+
+    const clearNominations = async () => {
+        setNominationsList([]);
     }
 
     const nominate = async (input) => {
@@ -137,7 +143,7 @@ const Home = (props) => {
         <ContentDiv>
             <h1><Logo className="logo" src={logo} alt="Shopify Logo" />
             the shoppies</h1>
-            <p2>Welcome to The Shoppies, the annual movie awards for entrepreneurs. You can nominate up to 5 movies!</p2>
+            <h4>Welcome to The Shoppies, the annual movie awards for entrepreneurs. You can nominate up to 5 movies!</h4>
             <SearchDiv>
                 <h2>Movie Title</h2>
                 <SearchBar
@@ -177,7 +183,9 @@ const Home = (props) => {
                         remove={unnominate} 
                         open={openModal} />
                         </tbody>
+                        
                     </table>
+                    <Button onClick={clearNominations}>Clear</Button> 
                     </ResultDiv>
                 </Col>
             </Row>

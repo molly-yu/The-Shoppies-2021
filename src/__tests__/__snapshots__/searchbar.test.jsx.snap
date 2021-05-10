@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar render searchbar without crashing 1`] = `
+<styled.input
+  key=""
+  onChange={[Function]}
+  onKeyPress={[Function]}
+  placeholder="Search movies by title..."
+  value="test"
+/>
+`;

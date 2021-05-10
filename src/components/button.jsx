@@ -1,13 +1,11 @@
 import styled, { css } from "styled-components";
 
 const Button = styled.button`
-    
     border: none;
-    margin: 3px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    
+    float:right;
     &:hover {
         opacity:40%;
     }

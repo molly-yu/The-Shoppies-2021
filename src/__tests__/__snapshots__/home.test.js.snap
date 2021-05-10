@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home render home without crashing 1`] = `
+<div
+  className="Home"
+>
+  <styled.div>
+    <h1>
+      <styled.img
+        alt="Shopify Logo"
+        className="logo"
+        src="shopify_icon.png"
+      />
+      the shoppies
+    </h1>
+    <h4>
+      Welcome to The Shoppies, the annual movie awards for entrepreneurs. You can nominate up to 5 movies!
+    </h4>
+    <styled.div>
+      <h2>
+        Movie Title
+      </h2>
+      <SearchBar
+        keyword=""
+        searchEnter={[Function]}
+        setKeyword={[Function]}
+      />
+      <styled.button
+        onClick={[Function]}
+      >
+        Search
+      </styled.button>
+    </styled.div>
+    <Row
+      noGutters={false}
+    >
+      <Col>
+        <styled.div>
+          <h2>
+            Search Results
+          </h2>
+          <styled.hr />
+          <h3>
+            Displaying search results for "".
+          </h3>
+          <table
+            aria-label="Search Results Table"
+          >
+            <tbody>
+              <SearchResults
+                add={[Function]}
+                nominated={Array []}
+                open={[Function]}
+                results={Array []}
+              />
+            </tbody>
+          </table>
+        </styled.div>
+      </Col>
+      <Col>
+        <styled.div>
+          <h2>
+            Nominations
+          </h2>
+          <styled.hr />
+          <h3>
+            Your nominations are automatically synced and saved.
+          </h3>
+          <table
+            aria-label="Nominations Table"
+          >
+            <tbody>
+              <Nominations
+                nominations={Array []}
+                open={[Function]}
+                remove={[Function]}
+              />
+            </tbody>
+          </table>
+          <styled.button
+            onClick={[Function]}
+          >
+            Clear
+          </styled.button>
+        </styled.div>
+      </Col>
+    </Row>
+    <Modal
+      animation={true}
+      autoFocus={true}
+      backdrop={true}
+      dialogAs={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        }
+      }
+      enforceFocus={true}
+      keyboard={true}
+      onHide={[Function]}
+      restoreFocus={true}
+      show={false}
+    >
+      <ModalHeader
+        closeButton={false}
+        closeLabel="Close"
+      >
+        <ModalTitle />
+        <styled.button
+          aria-label="Close"
+          close={true}
+          onClick={[Function]}
+        >
+          ×
+        </styled.button>
+      </ModalHeader>
+      <ModalBody>
+        <styled.img
+          alt="Movie Poster"
+          src=""
+        />
+        <p />
+        <p>
+          Genre: 
+        </p>
+        <p>
+          Directed by 
+        </p>
+        <p>
+          Written by 
+        </p>
+        <p>
+          Featuring 
+        </p>
+      </ModalBody>
+      <ModalFooter>
+        <styled.button
+          onClick={[Function]}
+        >
+          View on IMDb
+        </styled.button>
+      </ModalFooter>
+    </Modal>
+    <NotificationContainer
+      enterTimeout={400}
+      leaveTimeout={400}
+    />
+  </styled.div>
+</div>
+`;

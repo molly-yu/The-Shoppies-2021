@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nominations render nominations without crashing 1`] = `
+<Fragment>
+  <tr
+    key="1"
+  >
+    <td>
+      <styled.button
+        onClick={[Function]}
+        round={true}
+      >
+        ✕
+      </styled.button>
+    </td>
+    <td>
+      title1 (2000)
+    </td>
+    <td>
+      <styled.button
+        close={true}
+      >
+        <styled.img
+          alt="Open"
+          aria-label="Expand"
+          onClick={[Function]}
+          src="open.png"
+        />
+      </styled.button>
+    </td>
+  </tr>
+</Fragment>
+`;
+
+exports[`SearchResults render searchresults without crashing 1`] = `
+<Fragment>
+  <tr
+    key="1"
+  >
+    <td>
+      <styled.button
+        onClick={[Function]}
+        round={true}
+      >
+        ✕
+      </styled.button>
+    </td>
+    <td>
+      title1 (2000)
+    </td>
+    <td>
+      <styled.button
+        close={true}
+      >
+        <styled.img
+          alt="Open"
+          aria-label="Expand"
+          onClick={[Function]}
+          src="open.png"
+        />
+      </styled.button>
+    </td>
+  </tr>
+</Fragment>
+`;
