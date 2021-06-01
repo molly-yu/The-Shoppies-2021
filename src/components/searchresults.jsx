@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from "styled-components";
 
 import OpenIcon from '../assets/open.png';
 import Button from './button';
@@ -8,7 +7,7 @@ import Icon from './icon';
 const SearchResults = ({results=[], nominated=[], add, open}) => {
   return (
     <>
-    { results.map((data,index) => {
+    { results.map((data) => {
         let disabled = false;
         if (data) {
             if(nominated.length === 5 || nominated.find(movie => movie.imdbID === data.imdbID)){
