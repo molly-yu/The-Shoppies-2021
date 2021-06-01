@@ -7,13 +7,13 @@ import Icon from './icon';
 const Nominations = ({nominations=[], remove, open}) => {
   return (
     <>
-    { nominations.map((data,index) => {
+    { nominations.map((data) => {
         if (data) {
           return (
             <tr key={data.imdbID}>
-                <td><Button round={true} onClick={() => { remove(data) }}>✕</Button></td>
+                <td><Button aria-label="Remove Nomination" round={true} onClick={() => { remove(data) }}>✕</Button></td>
                 <td className='movieTitle'>{data.Title + " (" + data.Year + ")"}</td>
-                <td><Button close={true}><Icon aria-label="Expand" src={OpenIcon} alt="Open" onClick={() => {open(data)}}/></Button></td>
+                <td><Button aria-label="Expand Movie" close={true}><Icon src={OpenIcon} alt="Open" onClick={() => {open(data)}}/></Button></td>
             </tr>
     	   )	
     	 }

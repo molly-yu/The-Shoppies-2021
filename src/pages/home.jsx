@@ -151,7 +151,7 @@ const Home = () => {
                     setKeyword={updateSearch}
                     searchEnter={search}
                 />
-                <Button onClick={search}>Search</Button> 
+                <Button aria-label="Search" onClick={search}>Search</Button> 
             </SearchDiv>
             
             <Row>
@@ -160,9 +160,9 @@ const Home = () => {
                     <h2>Search Results</h2>
                     <LineBreak />
                     <h3>{`Displaying search results for "${searchValue}".`}</h3>
-                    <table aria-label="Search Results Table">
+                    <table aria-labelledby="Search Results">
                         <tbody>
-                        <SearchResults 
+                        <SearchResults aria-haspopup="true"
                             results={resultList}
                             nominated={nominationsList}
                             add={nominate} 
@@ -176,9 +176,9 @@ const Home = () => {
                     <h2>Nominations</h2>
                     <LineBreak />
                     <h3>Your nominations are automatically synced and saved.</h3>
-                    <table aria-label="Nominations Table">
+                    <table aria-labelledby="Nominations">
                         <tbody>
-                    <Nominations 
+                    <Nominations aria-haspopup="true"
                         nominations={nominationsList} 
                         remove={unnominate} 
                         open={openModal} />
@@ -189,7 +189,7 @@ const Home = () => {
                     </ResultDiv>
                 </Col>
             </Row>
-      <Modal show={modalOpen} onHide={closeModal}>
+      <Modal aria-labelledby="Movie Details" show={modalOpen} onHide={closeModal}>
       <Modal.Header>
           <Modal.Title>{movieOpen ? movieOpen.Title + ` (${movieOpen.Year})`: ''}</Modal.Title>
           <Button aria-label="Close" close={true} onClick={closeModal}>×</Button>
